@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Killed by Discord</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f5f3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px;
+  overflow: hidden;
+}
+
+.big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 18vw, 220px);
+  line-height: 0.88;
+  color: #111;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+.big .blurple { color: #5865F2; }
+
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: #888;
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5865F2;
+  display: inline-block;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.line {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #5865F2;
+}
+
+.corner {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  position: fixed;
+  bottom: 28px;
+  right: 48px;
+  letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+
+<div class="big">
+  UNDER<br>
+  <span class="blurple">MAIN</span><br>
+  TENANCE
+</div>
+
+<div class="tag">
+  <span class="dot"></span>
+  back soon — the dead aren't going anywhere
+</div>
+
+<div class="line"></div>
+<div class="corner">killedbydiscord.com</div>
+
+</body>
+</html>
