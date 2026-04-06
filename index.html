@@ -405,7 +405,7 @@ footer a:hover { text-decoration: underline; }
     <span class="nav-title">Killed by Discord</span>
   </a>
   <div class="nav-right">
-    <span class="nav-stat"><strong id="nav-kill-counter">19</strong> killed</span>
+    <span class="nav-stat"><strong id="nav-kill-counter">19</strong> kills</span>
     <span class="nav-stat"><strong>2026</strong> latest kill</span>
     <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Submit a kill</button>
   </div>
@@ -416,12 +416,12 @@ footer a:hover { text-decoration: underline; }
     <div class="header-left">
       <p class="header-eyebrow">The Discord Graveyard</p>
       <h1>Killed by <span>Discord.</span></h1>
-      <p class="header-sub">Features &amp; programs Discord quietly put down. Some were loved. Most were forgotten. All are gone.</p>
+      <p class="header-sub">Features &amp; programs Discord quietly put down. <br>Some were loved, most were forgotten — all are gone.</p>
     </div>
     <div class="header-stats">
       <div class="stat">
         <span class="stat-num" id="kill-counter">0</span>
-        <span class="stat-label">Killed</span>
+        <span class="stat-label">Kills</span>
       </div>
       <div class="stat">
         <span class="stat-num">2026</span>
@@ -439,9 +439,9 @@ footer a:hover { text-decoration: underline; }
     </div>
     <div class="filters">
       <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="abandoned">Abandoned</button>
-      <button class="filter-btn" data-filter="cancelled">Cancelled</button>
       <button class="filter-btn" data-filter="removed">Removed</button>
+      <button class="filter-btn" data-filter="discontinued">Discontinued</button>
+      <button class="filter-btn" data-filter="cancelled">Cancelled</button>
     </div>
     <span class="count-line"><span id="showing-count">8</span> entries</span>
   </div>
@@ -459,25 +459,25 @@ footer a:hover { text-decoration: underline; }
 <script>
 
 var items = [
-  { name: "Clyde Chatbot",                  type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Mod Queue",                      type: "cancelled", born: 0, died: 0, desc: "" },
-  { name: "Discord Games Lab",              type: "cancelled", born: 0, died: 0, desc: "" },
-  { name: "Clans",                          type: "cancelled", born: 0, died: 0, desc: "" },
-  { name: "Dead Chat Prompt",               type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Discriminators",                 type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Non-Nitro Profile Banners",      type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Channel Icons",                  type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Active Developer Badge",         type: "abandoned", born: 0, died: 0, desc: "" },
-  { name: "Server Template Directory",      type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Discord Moderators Academy",     type: "abandoned", born: 0, died: 0, desc: "" },
-  { name: "Emoji Packs",                    type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Guilds",                         type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Stage Discovery",                type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "Partner Program",                type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "HypeSquad Events",               type: "abandoned", born: 0, died: 0, desc: "" },
-  { name: "HypeSquad",                      type: "abandoned", born: 0, died: 0, desc: "" },
-  { name: "Games Library",                  type: "removed",   born: 0, died: 0, desc: "" },
-  { name: "OG Blurple",                     type: "removed",   born: 0, died: 0, desc: "" }
+  { name: "Clyde AI Chatbot",               type: "removed",      born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was ultimately shut down later that same year for an undisclosed reason." },
+  { name: "Mod Queue",                      type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discord Games Lab",              type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Clans",                          type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Dead Chat Prompt",               type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discriminators",                 type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Non-Nitro Profile Banners",      type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Channel Icons",                  type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Active Developer Badge",         type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Server Template Directory",      type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discord Moderators Academy",     type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Emoji Packs",                    type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Guilds",                         type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Stage Discovery",                type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Partner Program",                type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "HypeSquad Events",               type: "discontinued", born: 1970, died: 2067, desc: "HypeSquad Events was once just \"HypeSquad\", the original iteration of the program. It aimed to reward users for representing Discord at real-world events and hosting their own." },
+  { name: "HypeSquad",                      type: "discontinued", born: 2016, died: 2025, desc: "HypeSquad was a program for fans of Discord. Users could join one of three houses based on their interests and represent their house during various events on the platform." },
+  { name: "Game Store",                     type: "removed",      born: 2017, died: 2021, desc: "There was a time when developers could sell their games directly on Discord. Nitro users would unlock access to a rotating selection of games for free with their subscription."},
+  { name: "OG Blurple",                     type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
 ];
 
 function getAge(born, died) {
