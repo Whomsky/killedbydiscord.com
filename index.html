@@ -5,91 +5,638 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Killed by Discord</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #f5f5f3;
+  --white: #ffffff;
+  --black: #111110;
+  --grey: #888884;
+  --grey-light: #e8e8e5;
+  --border: #ddddd9;
+  --blurple: #5865F2;
+}
 
 body {
-  background: #f5f5f3;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--black);
+  font-family: 'gg sans', 'Noto Sans', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 64px;
-  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 56px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.big {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(100px, 18vw, 220px);
-  line-height: 0.88;
-  color: #111;
-  letter-spacing: -0.01em;
-  user-select: none;
-}
-
-.big .blurple { color: #5865F2; }
-
-.tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  color: #888;
-  margin-top: 36px;
+.nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  margin-left: 12px;
-  border-radius: 50%;
-  background: #5865F2;
-  display: inline-block;
-  animation: blink 1.2s ease-in-out infinite;
+
+.nav-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.01em;
 }
 
-@keyframes blink {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.2; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+
+.nav-stat { font-size: 13px; color: var(--grey); }
+.nav-stat strong { color: var(--black); font-weight: 600; }
+
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 44px 48px 40px;
 }
 
-.line {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: #5865F2;
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-.corner {
-  font-family: 'IBM Plex Mono', monospace;
+.header-eyebrow {
   font-size: 11px;
-  color: #bbb;
-  position: fixed;
-  bottom: 28px;
-  right: 48px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--grey);
+  margin-bottom: 10px;
 }
+
+.header h1 {
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.header h1 span { color: var(--blurple); }
+
+.header-sub {
+  color: var(--grey);
+  font-size: 14px;
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+.header-stats { display: flex; gap: 36px; flex-shrink: 0; padding-bottom: 4px; }
+.stat { text-align: right; }
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  display: block;
+  margin-top: 5px;
+}
+
+.controls {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 56px;
+  z-index: 99;
+}
+
+.controls-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 11px 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.search-wrap { position: relative; min-width: 180px; max-width: 260px; flex: 1; }
+
+.search-wrap svg {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--grey);
+  pointer-events: none;
+}
+
+#search {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 12px 7px 32px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--black);
+  outline: none;
+  transition: border-color .15s;
+}
+#search:focus { border-color: var(--black); }
+#search::placeholder { color: #c4c4c0; }
+
+.filters { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--grey);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--black); color: var(--black); }
+.filter-btn.active { background: var(--black); border-color: var(--black); color: var(--white); }
+
+.count-line { margin-left: auto; font-size: 12px; color: var(--grey); white-space: nowrap; }
+
+.main { max-width: 1100px; margin: 0 auto; padding: 28px 48px 80px; }
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--white);
+  padding: 26px 28px;
+  transition: background .12s;
+  animation: fadeIn .3s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover { background: var(--bg); }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.gravestone-svg { width: 40px; height: 48px; flex-shrink: 0; }
+
+
+.tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+
+.card h2 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 7px;
+  color: var(--black);
+}
+
+.card p { font-size: 12.5px; color: var(--grey); line-height: 1.6; }
+
+.card-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.year-range { font-size: 12px; color: var(--grey); font-weight: 500; }
+
+.age-badge {
+  font-size: 11px;
+  color: var(--grey);
+  background: var(--grey-light);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+#empty { display: none; text-align: center; padding: 80px 24px; color: var(--grey); font-size: 14px; }
+
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 24px;
+  color: var(--grey);
+  font-size: 12px;
+}
+footer a { color: var(--black); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  nav, .header, .main { padding-left: 20px; padding-right: 20px; }
+  .controls-inner { padding: 10px 20px; }
+  .header h1 { font-size: 34px; }
+  .header-stats { gap: 20px; }
+  .nav-right { display: none; }
+}
+
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 36px;
+  width: 100%;
+  max-width: 440px;
+  margin: 24px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+.modal h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--black);
+}
+.modal-sub {
+  font-size: 13px;
+  color: var(--grey);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.modal-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--grey-light);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+}
+.modal-close:hover { background: var(--border); color: var(--black); }
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.form-row label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+}
+.form-row input,
+.form-row select,
+.form-row textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--black);
+  outline: none;
+  transition: border-color .15s;
+  width: 100%;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus { border-color: var(--black); }
+.form-row textarea { resize: vertical; min-height: 80px; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.form-row-2 .form-row { margin-bottom: 0; }
+.modal-submit {
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity .15s;
+}
+.modal-submit:hover { opacity: 0.75; }
+.modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0 4px;
+}
+.modal-success .check { font-size: 36px; margin-bottom: 10px; display: block; }
+.modal-success p { color: var(--grey); font-size: 14px; }
 </style>
 </head>
 <body>
 
-<div class="big">
-  <span class="blurple">UNDER</span><br>
-  MAINTENANCE
+<nav>
+  <a class="nav-left" href="#">
+    <span class="nav-title">Killed by Discord</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-stat"><strong id="nav-kill-counter">19</strong> killed</span>
+    <span class="nav-stat"><strong>2026</strong> latest kill</span>
+    <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Submit a kill</button>
+  </div>
+</nav>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <p class="header-eyebrow">The Discord Graveyard</p>
+      <h1>Killed by <span>Discord.</span></h1>
+      <p class="header-sub">Features &amp; programs Discord quietly put down. Some were loved. Most were forgotten. All are gone.</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat">
+        <span class="stat-num" id="kill-counter">0</span>
+        <span class="stat-label">Killed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2026</span>
+        <span class="stat-label">Latest kill</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="tag">
-  <span class="dot"></span>
-  Back soon — the dead aren't going anywhere
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search" type="text" placeholder="Search the graveyard..." autocomplete="off"/>
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="abandoned">Abandoned</button>
+      <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+      <button class="filter-btn" data-filter="removed">Removed</button>
+    </div>
+    <span class="count-line"><span id="showing-count">8</span> entries</span>
+  </div>
 </div>
 
-<div class="line"></div>
-<div class="corner">killedbydiscord.com</div>
+<div class="main">
+  <div id="grid"></div>
+  <div id="empty">Nothing found in the graveyard.</div>
+</div>
+
+<footer>
+  Not affiliated with Discord &nbsp;&middot;&nbsp; Built by <a href="https://x.com/peppybug" target="_blank" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">peppybug</a>
+</footer>
+
+<script>
+
+var items = [
+  { name: "Clyde Chatbot",                  type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Mod Queue",                      type: "cancelled", born: 0, died: 0, desc: "" },
+  { name: "Discord Games Lab",              type: "cancelled", born: 0, died: 0, desc: "" },
+  { name: "Clans",                          type: "cancelled", born: 0, died: 0, desc: "" },
+  { name: "Dead Chat Prompt",               type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Discriminators",                 type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Non-Nitro Profile Banners",      type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Channel Icons",                  type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Active Developer Badge",         type: "abandoned", born: 0, died: 0, desc: "" },
+  { name: "Server Template Directory",      type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Discord Moderators Academy",     type: "abandoned", born: 0, died: 0, desc: "" },
+  { name: "Emoji Packs",                    type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Guilds",                         type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Stage Discovery",                type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "Partner Program",                type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "HypeSquad Events",               type: "abandoned", born: 0, died: 0, desc: "" },
+  { name: "HypeSquad",                      type: "abandoned", born: 0, died: 0, desc: "" },
+  { name: "Games Library",                  type: "removed",   born: 0, died: 0, desc: "" },
+  { name: "OG Blurple",                     type: "removed",   born: 0, died: 0, desc: "" }
+];
+
+function getAge(born, died) {
+  var d = died - born;
+  if (d === 0) return '< 1 yr';
+  return d === 1 ? '1 yr' : d + ' yrs';
+}
+
+var grid = document.getElementById('grid');
+var searchInput = document.getElementById('search');
+var filterBtns = document.querySelectorAll('.filter-btn');
+var showingCount = document.getElementById('showing-count');
+var emptyState = document.getElementById('empty');
+var activeFilter = 'all';
+
+function render(list) {
+  grid.innerHTML = '';
+  if (!list.length) { emptyState.style.display = 'block'; showingCount.textContent = '0'; return; }
+  emptyState.style.display = 'none';
+  showingCount.textContent = list.length;
+  list.forEach(function(item, i) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = (i * 0.04) + 's';
+    var svg = '<svg class="gravestone-svg" viewBox="0 0 60 76" fill="none" xmlns="http://www.w3.org/2000/svg">';
+    svg += '<rect x="8" y="54" width="44" height="7" rx="1.5" fill="none" stroke="#aaa9a5" stroke-width="1.4"/>';
+    svg += '<rect x="3" y="59" width="54" height="5" rx="1.5" fill="none" stroke="#aaa9a5" stroke-width="1.4"/>';
+    svg += '<path d="M13 54 L13 21 Q13 5 30 5 Q47 5 47 21 L47 54 Z" fill="none" stroke="#aaa9a5" stroke-width="1.4"/>';
+    svg += '<path d="M18 52 L18 22 Q18 10 30 10 Q42 10 42 22 L42 52" fill="none" stroke="#aaa9a5" stroke-width="0.8" stroke-dasharray="0"/>';
+    svg += '<text x="30" y="36" text-anchor="middle" font-size="8" font-weight="700" fill="#aaa9a5" letter-spacing="2">RIP</text>';
+    svg += '</svg>';
+  card.innerHTML =
+      '<div class="card-top">' +
+        svg +
+        '<span class="tag">' + item.type + '</span>' +
+      '</div>' +
+      '<h2>' + item.name + '</h2>' +
+      (item.desc ? '<p>' + item.desc + '</p>' : '') +
+      (item.born ? '<div class="card-footer"><span class="year-range">' + item.born + ' &ndash; ' + item.died + '</span><span class="age-badge">' + getAge(item.born, item.died) + ' old</span></div>' : '');
+    grid.appendChild(card);
+  });
+}
+
+function applyFilters() {
+  var q = searchInput.value.toLowerCase().trim();
+  render(items.filter(function(item) {
+    return (activeFilter === 'all' || item.type === activeFilter) &&
+           (!q || item.name.toLowerCase().indexOf(q) !== -1 || item.desc.toLowerCase().indexOf(q) !== -1);
+  }));
+}
+
+filterBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+searchInput.addEventListener('input', applyFilters);
+render(items);
+
+// Animated kill counter
+function animateCounter(el, target, duration) {
+  var start = 0;
+  var step = target / (duration / 16);
+  var timer = setInterval(function() {
+    start += step;
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = Math.floor(start);
+  }, 16);
+}
+
+window.addEventListener('load', function() {
+  var el = document.getElementById('kill-counter');
+  if (el) animateCounter(el, 19, 1200);
+});
+
+function submitKill() {
+  var name = document.getElementById('f-name').value.trim();
+  var desc = document.getElementById('f-desc').value.trim();
+  var died = document.getElementById('f-died').value.trim();
+  var type = document.getElementById('f-type').value;
+  if (!name || !desc || !died) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  var btn = document.querySelector('.modal-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/xnjoonaa', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, description: desc, category: type, year_killed: died })
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    btn.textContent = 'Submit →';
+    btn.disabled = false;
+    document.getElementById('modal-form-content').style.display = 'none';
+    document.getElementById('modal-success').style.display = 'block';
+    setTimeout(function() {
+      document.getElementById('submit-modal').classList.remove('open');
+      document.getElementById('modal-form-content').style.display = 'block';
+      document.getElementById('modal-success').style.display = 'none';
+      document.getElementById('f-name').value = '';
+      document.getElementById('f-desc').value = '';
+      document.getElementById('f-died').value = '';
+    }, 2500);
+  })
+  .catch(function() {
+    btn.textContent = 'Submit →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  });
+}
+
+</script>
+
+<!-- SUBMIT MODAL -->
+<div class="modal-overlay" id="submit-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('submit-modal').classList.remove('open')">&times;</button>
+    <h2>Submit a Kill</h2>
+    <p class="modal-sub">Know something Discord quietly killed? Add it to the graveyard.</p>
+    <div id="modal-form-content">
+      <div class="form-row">
+        <label>Feature / Program name</label>
+        <input type="text" id="f-name" placeholder="e.g. Stage Discovery"/>
+      </div>
+      <div class="form-row">
+        <label>Description</label>
+        <textarea id="f-desc" placeholder="What was it? Why did people like it?"></textarea>
+      </div>
+      <div class="form-row-2">
+        <div class="form-row" style="margin-bottom:0">
+          <label>Category</label>
+          <select id="f-type">
+            <option value="removed">Removed</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="abandoned">Abandoned</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>Year killed</label>
+          <input type="number" id="f-died" placeholder="e.g. 2024" min="2015" max="2026"/>
+        </div>
+      </div>
+      <button class="modal-submit" onclick="submitKill()">Submit &rarr;</button>
+    </div>
+    <div class="modal-success" id="modal-success">
+      <span class="check">&#x1FAA6;</span>
+      <h2 style="margin-bottom:8px">Thanks!</h2>
+      <p>Your submission has been noted. R.I.P.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
