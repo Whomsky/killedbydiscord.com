@@ -405,7 +405,7 @@ footer a:hover { text-decoration: underline; }
     <span class="nav-title">Killed by Discord</span>
   </a>
   <div class="nav-right">
-    <span class="nav-stat"><strong id="nav-kill-counter">19</strong> kills</span>
+    <span class="nav-stat"><strong id="nav-kill-counter">0</strong> kills</span>
     <span class="nav-stat"><strong>2026</strong> latest kill</span>
     <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Submit a kill</button>
   </div>
@@ -552,8 +552,10 @@ function animateCounter(el, target, duration) {
 }
 
 window.addEventListener('load', function() {
-  var el = document.getElementById('kill-counter');
-  if (el) animateCounter(el, 19, 1200);
+  var el = document.getElementById('kill-counter')
+  if (el) animateCounter(el, items.length, 1200);
+  var el = document.getElementById('nav-kill-counter')
+  if (el) animateCounter(el, items.length, 1200);
 });
 
 function submitKill() {
