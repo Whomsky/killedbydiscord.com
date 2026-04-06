@@ -7,4 +7,4 @@ Killed by Discord is a free and open source list of discontinued or deprecated D
 [@Dinorawr](https://github.com/Dinorawrrrrr)<br>
 <br>
 ## Disclaimer
-killedbydiscord.com is not affiliated with or endorsed by Discord Inc.
+killedbydiscord.com is not affiliated with or endorsed by Discord.
