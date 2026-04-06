@@ -441,7 +441,7 @@ footer a:hover { text-decoration: underline; }
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="removed">Removed</button>
       <button class="filter-btn" data-filter="discontinued">Discontinued</button>
-      <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+      <button class="filter-btn" data-filter="abandoned">Abandoned</button>
     </div>
     <span class="count-line"><span id="showing-count">8</span> entries</span>
   </div>
@@ -459,25 +459,24 @@ footer a:hover { text-decoration: underline; }
 <script>
 
 var items = [
-  { name: "Clyde AI Chatbot",               type: "removed",      born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was ultimately shut down later that same year for an undisclosed reason." },
-  { name: "Mod Queue",                      type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Discord Games Lab",              type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Clans",                          type: "cancelled",    born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Dead Chat Prompt",               type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Discriminators",                 type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Non-Nitro Profile Banners",      type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Channel Icons",                  type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Active Developer Badge",         type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Server Template Directory",      type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Discord Moderators Academy",     type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Emoji Packs",                    type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Guilds",                         type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Stage Discovery",                type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Partner Program",                type: "discontinued", born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "HypeSquad Events",               type: "discontinued", born: 1970, died: 2067, desc: "HypeSquad Events was once just \"HypeSquad\", the original iteration of the program. It aimed to reward users for representing Discord at real-world events and hosting their own." },
+  { name: "Clyde AI Chatbot",               type: "removed",      born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was shut down later that same year for an undisclosed reason." },
+  { name: "Mod Queue",                      type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discord Games Lab",              type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Dead Chat Prompt",               type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discriminators",                 type: "removed",      born: 2015, died: 2023, desc: "Discriminators were unique identifiers used to distinguish users in Discord, allowing for up to 9999 users to share the same username. <br>(e.g @Wumpus#4910)" },
+  { name: "Non-Nitro Profile Banners",      type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Channel Icons",                  type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Active Developer Badge",         type: "removed",      born: 2022, died: 2026, desc: "A relatively easy to obtain badge by creating an app and running at least one slash command monthly. It was ultimately discontinued and removed, citing \"heavy amount of support issues with little benefit to developers\"." },
+  { name: "Server Template Directory",      type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discord Moderators Academy",     type: "discontinued", born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Emoji Packs",                    type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Guilds",                         type: "removed",      born: 0, died: 0, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and was \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as standalone features." },
+  { name: "Stage Discovery",                type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Partner Program",                type: "abandoned",    born: 0, died: 0, desc: "The Partner Program was aimed towards recognizing and highlighting outstanding servers on the platform. While it has been discontinued, traces of it remain on the platform to this day." },
+  { name: "HypeSquad Events",               type: "discontinued", born: 0, died: 0, desc: "HypeSquad Events was once just \"HypeSquad\", the original iteration of the program. It aimed to reward users for representing Discord at real-world events and hosting their own." },
   { name: "HypeSquad",                      type: "discontinued", born: 2016, died: 2025, desc: "HypeSquad was a program for fans of Discord. Users could join one of three houses based on their interests and represent their house during various events on the platform." },
   { name: "Game Store",                     type: "removed",      born: 2017, died: 2021, desc: "There was a time when developers could sell their games directly on Discord. Nitro users would unlock access to a rotating selection of games for free with their subscription."},
-  { name: "OG Blurple",                     type: "removed",      born: 1970, died: 2067, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "OG Blurple",                     type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
 ];
 
 function getAge(born, died) {
