@@ -442,6 +442,7 @@ footer a:hover { text-decoration: underline; }
       <button class="filter-btn" data-filter="removed">Removed</button>
       <button class="filter-btn" data-filter="discontinued">Discontinued</button>
       <button class="filter-btn" data-filter="abandoned">Abandoned</button>
+      <button class="filter-btn" data-filter="experimental">Experimental</button>
     </div>
     <span class="count-line"><span id="showing-count">8</span> entries</span>
   </div>
@@ -460,18 +461,18 @@ footer a:hover { text-decoration: underline; }
 
 var items = [
   { name: "Clyde AI Chatbot",               type: "removed",      born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was shut down later that same year for an undisclosed reason." },
-  { name: "Mod Queue",                      type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Discord Games Lab",              type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Dead Chat Prompt",               type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Mod Queue",                      type: "abandoned",    born: 2025, died: 2025, desc: "This feature would allow users to natively report members to the server moderators. Reports and mod actions would appear in a repurposed forum channel for review." },
+  { name: "Discord Games Lab",              type: "removed",      born: 0, died: 0, desc: "Games Lab was one of Discord's official servers for everything activities. Users could provide feedback here, play with others and test out certain new activities early." },
+  { name: "Dead Chat Prompt",               type: "experimental", born: 0, died: 0, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
   { name: "Discriminators",                 type: "removed",      born: 2015, died: 2023, desc: "Discriminators were unique identifiers used to distinguish users in Discord, allowing for up to 9999 users to share the same username. <br>(e.g @Wumpus#4910)" },
   { name: "Non-Nitro Profile Banners",      type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Channel Icons",                  type: "abandoned",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Channel Icons",                  type: "abandoned",    born: 0, died: 0, desc: "Channel Icons were a feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." },
   { name: "Active Developer Badge",         type: "removed",      born: 2022, died: 2026, desc: "A relatively easy to obtain badge by creating an app and running at least one slash command monthly. It was ultimately discontinued and removed, citing \"heavy amount of support issues with little benefit to developers\"." },
   { name: "Server Template Directory",      type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
-  { name: "Discord Moderators Academy",     type: "discontinued", born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Discord Moderators Academy",     type: "discontinued", born: 0, died: 0, desc: "The Moderators Academy was a program designed to support server moderators. It provided resources, guidelines, and best practices for effective moderation. Involved members could qualify for an exclusive badge." },
   { name: "Emoji Packs",                    type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
   { name: "Guilds",                         type: "removed",      born: 0, died: 0, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and was \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as standalone features." },
-  { name: "Stage Discovery",                type: "removed",      born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
+  { name: "Stage Discovery",                type: "removed",      born: 0, died: 0, desc: "Stage Discovery was a feature that allowed users to discover and join live audio events happening in various servers, without being a member of those servers. It aimed to increase engagement and participation in live events." },
   { name: "Partner Program",                type: "abandoned",    born: 0, died: 0, desc: "The Partner Program was aimed towards recognizing and highlighting outstanding servers on the platform. While it has been discontinued, traces of it remain on the platform to this day." },
   { name: "HypeSquad Events",               type: "discontinued", born: 0, died: 0, desc: "HypeSquad Events was once just \"HypeSquad\", the original iteration of the program. It aimed to reward users for representing Discord at real-world events and hosting their own." },
   { name: "HypeSquad",                      type: "discontinued", born: 2016, died: 2025, desc: "HypeSquad was a program for fans of Discord. Users could join one of three houses based on their interests and represent their house during various events on the platform." },
@@ -620,8 +621,9 @@ function submitKill() {
           <label>Category</label>
           <select id="f-type">
             <option value="removed">Removed</option>
-            <option value="cancelled">Cancelled</option>
+            <option value="discontinued">Discontinued</option>
             <option value="abandoned">Abandoned</option>
+            <option value="experimental">Experimental</option>
           </select>
         </div>
         <div class="form-row" style="margin-bottom:0">
