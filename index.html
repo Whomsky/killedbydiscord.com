@@ -494,6 +494,7 @@ footer a:hover { text-decoration: underline; }
       <button class="filter-btn" data-filter="removed">Removed</button>
       <button class="filter-btn" data-filter="discontinued">Discontinued</button>
       <button class="filter-btn" data-filter="abandoned">Abandoned</button>
+      <button class="filter-btn" data-filter="scrapped">Scrapped</button>
     </div>
       <button class="info-btn" onclick="document.getElementById('info-modal').classList.add('open')">?</button>
     <span class="count-line"><span id="showing-count">0</span> entries</span>
@@ -529,10 +530,18 @@ var items = [
   { name: "Guilds",                           type: "removed",      born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as a standalone feature." },
   { name: "Active Developer Badge",           type: "removed",      born: 2022, died: 2026, desc: "A relatively easy to obtain badge by creating an app and running at least one slash command monthly. It was ultimately discontinued and removed, citing \"heavy amount of support issues with little benefit to developers\"." },
   { name: "Discord Games Lab",                type: "removed",      born: 2021, died: 2025, desc: "Games Lab was one of Discord's official servers for everything activities. Users could provide feedback here, play with others and test out certain new activities early." },
-  { name: "Dead Chat Prompt",                 type: "removed",      born: 0, died: 0, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
-  { name: "Channel Icons",                    type: "removed",      born: 0, died: 0, desc: "Channel Icons were a feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." },  
-  { name: "Non-Nitro Profile Banners",        type: "removed",      born: 0, died: 0, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " },
-  { name: "Emoji Packs",                      type: "tbd",          born: 0, died: 0, desc: "We don't have a description for this yet. <img src='/wump.svg' style='height: 1.75em; vertical-align: middle; margin: 0 8px;'/>" },
+  { name: "Soundmojis",                       type: "removed",      born: 2024, died: 2024, desc: "Soundmojis were a new and experimental type of emoji that could play sounds when used in messages, just how users can play sounds using the Soundboard in voice calls." },
+  { name: "ICYMI (In Case You Missed It)",    type: "removed",      born: 2025, died: 2026, desc: "ICYMI was the spiritual successor to 'Channel Summaries'. ICYMI allowed you to catch up on server messages, activities, and more that you might have missed while you weren't actively using Discord." },          
+  { name: "Cloudflare WARP+",                 type: "removed",      born: 2026, died: 2026, desc: "Cloudflare WARP+ was planned to be included as a perk in Nitro, granting subscribers access to the service directly in-app." },
+  { name: "DM Wallpapers",                    type: "removed",      born: 2025, died: 2025, desc: "DM Wallpapers was an experimental, Nitro-only feature that allowed users to customize the background of their direct message conversation with another user." },
+  { name: "Dead Chat Prompt",                 type: "removed",      born: 2023, died: 2023, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
+  { name: "Channel Icons",                    type: "removed",          born: 2023, died: 2023, desc: "Channel Icons were an experimental feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." }, 
+/* { name: "Non-Nitro Profile Banners",        type: "tbd",      born: 0, died: 0, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " }, */
+  { name: "Wumpus Feedback Squad",            type: "discontinued", born: 2023, died: 2024, desc: "Wumpus Feedback Squad was an invite-only server for early feedback and closed beta testing of new features." },
+  { name: "Emoji Packs",                      type: "removed",          born: 2023, died: 2023, desc: "Allowed users to use custom emojis from curated collections without needing the join the original server." },
+  { name: "Potions",                          type: "scrapped",     born: 2024, died: 2024, desc: "Potions were an unreleased consumable feature that allowed users to buy certain Nitro-only perks for a limited time without having to commit to a Nitro subscription." },
+  { name: "Remix",                            type: "removed",      born: 2023, died: 2025, desc: "Remix was a feature that allowed users to edit (draw on, crop, etc) images within Discord." },
+  { name: "Channel Banners",                  type: "tbd",          born: 2021, died: 2021, desc: "We don't have a description for this yet. <br> Have a wump for now. <br> <img src='/wump.svg' style='height: 4.5em; vertical-align: middle; margin: 10px 12px;'/>" },
 ];
 
 function getAge(born, died) {
@@ -678,6 +687,7 @@ function submitKill() {
             <option value="removed">Removed</option>
             <option value="discontinued">Discontinued</option>
             <option value="abandoned">Abandoned</option>
+            <option value="scrapped">Scrapped</option>
           </select>
         </div>
         <div class="form-row" style="margin-bottom:0">
@@ -708,6 +718,8 @@ function submitKill() {
       <p class="info-desc">A feature or program has been sunset, but remnants of it remain on the platform and may still be accessible.</p>
       <h4>Abandoned</h4>
       <p class="info-desc">A feature or program has been left for dead. Discord is not doing anything with it, and refuses to formally confirm its discontinuation or remove it.</p>
+      <h4>Scrapped</h4>
+      <p class="info-desc">A feature or program that has only ever been worked on internally and was datamined or hinted at, but never saw a public release of any kind.</p>
     </div>
   </div>
 </div>
