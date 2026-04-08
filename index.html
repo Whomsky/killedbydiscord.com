@@ -202,6 +202,26 @@ nav {
 .filter-btn:hover { border-color: var(--black); color: var(--black); }
 .filter-btn.active { background: var(--black); border-color: var(--black); color: var(--white); }
 
+.info-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--grey);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .15s;
+}
+.info-btn:hover { border-color: var(--black); color: var(--black); }
+
 .count-line { margin-left: auto; font-size: 12px; color: var(--grey); white-space: nowrap; }
 
 .main { max-width: 1100px; margin: 0 auto; padding: 28px 48px 80px; }
@@ -337,7 +357,7 @@ footer a:hover { text-decoration: underline; }
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 6px;
+  margin-bottom: 1.5px;
   color: var(--black);
 }
 .modal-sub {
@@ -363,6 +383,7 @@ footer a:hover { text-decoration: underline; }
   transition: background .15s;
 }
 .modal-close:hover { background: var(--border); color: var(--black); }
+
 .form-row {
   display: flex;
   flex-direction: column;
@@ -419,13 +440,21 @@ footer a:hover { text-decoration: underline; }
 }
 .modal-success .check { font-size: 36px; margin-bottom: 10px; display: block; }
 .modal-success p { color: var(--grey); font-size: 14px; }
+
+.info-desc {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 14px;
+  color: var(--grey);
+}
+
 </style>
 </head>
 <body>
 
 <nav>
   <a class="nav-left" href="#">
-    <span class="nav-title">Killed by Discord</span>
+    <span class="nav-title">killedbydiscord.com</span>
   </a>
   <div class="nav-right">
     <span class="nav-stat"><strong id="nav-kill-counter">0</strong> kills</span>
@@ -465,9 +494,9 @@ footer a:hover { text-decoration: underline; }
       <button class="filter-btn" data-filter="removed">Removed</button>
       <button class="filter-btn" data-filter="discontinued">Discontinued</button>
       <button class="filter-btn" data-filter="abandoned">Abandoned</button>
-      <button class="filter-btn" data-filter="experimental">Experimental</button>
     </div>
-    <span class="count-line"><span id="showing-count">8</span> entries</span>
+      <button class="info-btn" onclick="document.getElementById('info-modal').classList.add('open')">?</button>
+    <span class="count-line"><span id="showing-count">0</span> entries</span>
   </div>
 </div>
 
@@ -492,16 +521,16 @@ var items = [
   { name: "Channel Summaries",                type: "abandoned",    born: 2023, died: 2024, desc: "Channel Summaries was an AI powered feature that provided a summary of recent conversations within a channel. This feature was never publicly released, but is still active and may be found in servers that were part of its closed beta test." },
   { name: "Server Home",                      type: "removed",      born: 2022, died: 2023, desc: "Server Home was a feature that provided a build-in 'Starboard'-like functionality. It would dynamically highlight trending conversations based on user interactions, and allow server mods to put messages in the spotlight." },
   { name: "Mod Queue",                        type: "abandoned",    born: 2025, died: 2025, desc: "This feature would allow users to natively report members to the server moderators. Reports and mod actions would appear in a repurposed forum channel for review." },
-  { name: "Game Store",                       type: "removed",      born: 2017, died: 2021, desc: "There was a time when developers could sell their games directly on Discord. Nitro users would unlock access to a rotating selection of games for free with their subscription." },
+  { name: "Game Store",                       type: "discontinued", born: 2017, died: 2021, desc: "There was a time when developers could list and sell their games directly on Discord. Users would unlock access to a rotating selection of games with an active Nitro subscription. Your owned items can still be accessed to this day." },
   { name: "Clyde AI Chatbot",                 type: "removed",      born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was shut down later that same year for an undisclosed reason." },
   { name: "Discord Moderators Academy",       type: "discontinued", born: 2021, died: 2022, desc: "The Moderators Academy was a program designed to support server moderators. It provided resources, guidelines, and best practices for effective moderation. Involved members could qualify for an exclusive badge." },
   { name: "Stage Discovery",                  type: "removed",      born: 2021, died: 2021, desc: "Stage Discovery was a feature that allowed users to discover and join live audio events happening in various servers, without being a member of those servers. It aimed to increase engagement and participation in live events." },
-  { name: "Vanity Invite (Individual Perk)",  type: "experimental", born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock a vanity invite for 5 boosts, without the need of collecting 14 boosts to reach level 3." },
+  { name: "Vanity Invite (Individual Perk)",  type: "removed",      born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock a vanity invite for 5 boosts, without the need of collecting 14 boosts to reach level 3." },
   { name: "Guilds",                           type: "removed",      born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as a standalone feature." },
   { name: "Active Developer Badge",           type: "removed",      born: 2022, died: 2026, desc: "A relatively easy to obtain badge by creating an app and running at least one slash command monthly. It was ultimately discontinued and removed, citing \"heavy amount of support issues with little benefit to developers\"." },
   { name: "Discord Games Lab",                type: "removed",      born: 0, died: 0, desc: "Games Lab was one of Discord's official servers for everything activities. Users could provide feedback here, play with others and test out certain new activities early." },
-  { name: "Dead Chat Prompt",                 type: "experimental", born: 0, died: 0, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
-  { name: "Channel Icons",                    type: "experimental", born: 0, died: 0, desc: "Channel Icons were a feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." },  
+  { name: "Dead Chat Prompt",                 type: "removed",      born: 0, died: 0, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
+  { name: "Channel Icons",                    type: "removed",      born: 0, died: 0, desc: "Channel Icons were a feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." },  
   { name: "Non-Nitro Profile Banners",        type: "undefined",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
   { name: "Server Template Directory",        type: "undefined",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
   { name: "Emoji Packs",                      type: "undefined",    born: 0, died: 0, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at faucibus dui. Etiam sit amet justo ut est semper porta." },
@@ -633,7 +662,7 @@ function submitKill() {
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('submit-modal').classList.remove('open')">&times;</button>
     <h2>Report a murder</h2>
-    <p class="modal-sub">Know something Discord quietly killed? Add it to the graveyard.</p>
+    <p class="modal-sub">Know something Discord (quietly) killed? Dig a hole for it.</p>
     <div id="modal-form-content">
       <div class="form-row">
         <label>Feature / Program name</label>
@@ -641,7 +670,7 @@ function submitKill() {
       </div>
       <div class="form-row">
         <label>Description</label>
-        <textarea id="f-desc" placeholder="What was it? Why did people like it?"></textarea>
+        <textarea id="f-desc" placeholder="What was it? Did people like it?"></textarea>
       </div>
       <div class="form-row-2">
         <div class="form-row" style="margin-bottom:0">
@@ -650,7 +679,6 @@ function submitKill() {
             <option value="removed">Removed</option>
             <option value="discontinued">Discontinued</option>
             <option value="abandoned">Abandoned</option>
-            <option value="experimental">Experimental</option>
           </select>
         </div>
         <div class="form-row" style="margin-bottom:0">
@@ -664,6 +692,23 @@ function submitKill() {
       <span class="check">&#x1FAA6;</span>
       <h2 style="margin-bottom:8px">Thanks!</h2>
       <p>Your submission has been noted. R.I.P.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LABEL INFO MODAL -->
+<div class="modal-overlay" id="info-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('info-modal').classList.remove('open')">&times;</button>
+    <h2>Filter label breakdown</h2>
+    <p class="modal-sub">Learn how we label the deceased in the graveyard.</p>
+    <div style="line-height:1.6;">
+      <h4>Removed</h4> 
+      <p class="info-desc">A feature or program has been wholefully removed from the platform, or was otherwise replaced.</p>
+      <h4>Discontinued</h4>
+      <p class="info-desc">A feature or program has been sunset, but remnants of it remain on the platform and may still be accessible.</p>
+      <h4>Abandoned</h4>
+      <p class="info-desc">A feature or program has been left for dead. Discord is not doing anything with it, and refuses to formally confirm its discontinuation or remove it.</p>
     </div>
   </div>
 </div>

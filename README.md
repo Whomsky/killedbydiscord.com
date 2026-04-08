@@ -1,5 +1,5 @@
 # Killed by Discord 
-Killed by Discord is a free and open source list of discontinued or deprecated Discord services, products, features and programs.<br>
+Killed by Discord is a free and open source list of discontinued or deprecated Discord features and programs.<br>
 <br>
 ## Authors
 [@Whomsky](https://github.com/Whomsky)\
