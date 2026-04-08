@@ -4,7 +4,7 @@ Killed by Discord is a free and open source list of discontinued or deprecated D
 ## Authors
 [@Whomsky](https://github.com/Whomsky)\
 [@Peppybug](https://github.com/peppybug)\
-[@Dinorawr](https://github.com/Dinorawrrrrr)<br>
+[@Dinorawr](https://github.com/Dinorawrrrrr)<br><br>
 Special thanks to [@7Macros](https://github.com/7Macros) for the Wumpus icon!
 <br>
 ## Disclaimer
