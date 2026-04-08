@@ -267,13 +267,13 @@ nav {
   font-size: 12.5px;
   line-height: 1.6;
   color: var(--grey);
-  margin-bottom: 21px; /* Remove if you prefer the footer does not stick to the bottom of the card when description is short */
+  margin-bottom: 21px; 
 }
 
 .card-footer {
-  margin-top: auto; /* revert to 14px if you prefer the footer does not stick to the bottom of the card when description is short */
+  margin-top: auto; 
   padding-top: 14px;
-  border-top: 0px solid var(--border); /* Testing out a version where the seperator between desc and footer is hidden. Restore to 1px */
+  border-top: 0px solid var(--border); 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -632,7 +632,7 @@ function submitKill() {
 <div class="modal-overlay" id="submit-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('submit-modal').classList.remove('open')">&times;</button>
-    <h2>Submit a Kill</h2>
+    <h2>Report a murder</h2>
     <p class="modal-sub">Know something Discord quietly killed? Add it to the graveyard.</p>
     <div id="modal-form-content">
       <div class="form-row">
