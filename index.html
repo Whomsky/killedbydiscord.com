@@ -274,6 +274,20 @@ nav {
   padding: 3px 7px;
 }
 
+.exp-tag {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 7px;
+  color: var(--grey);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 3px;
+  display: flex;
+  align-items: center;
+}
+
 .card h2 {
   font-size: 14px;
   font-weight: 700;
@@ -583,7 +597,7 @@ function render(list) {
         svg +
         '<span class="tag">' + item.type + '</span>' +
       '</div>' +
-      '<h2>' + item.name + '</h2>' +
+      '<h2>' + item.name + (item.experimental ? '<span class="exp-tag">Experimental</span>' : '') + '</h2>' +
       (item.desc ? '<p>' + item.desc + '</p>' : '') +
       (item.born ? '<div class="card-footer"><span class="year-range">' + item.born + ' &ndash; ' + item.died + '</span><span class="age-badge">' + getAge(item.born, item.died) + ' old</span></div>' : '');
     grid.appendChild(card);
