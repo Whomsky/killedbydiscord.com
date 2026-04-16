@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="icon" type="image/x-icon" href="/wump.svg">
+<link rel="icon" type="image/x-icon" href="images/wump.svg">
 <title>Killed by Discord</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
@@ -61,6 +61,17 @@ nav {
 
 .nav-stat { font-size: 13px; color: var(--grey); }
 .nav-stat strong { color: var(--black); font-weight: 600; }
+
+.socials {
+  background: none;
+  border: none;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.socials:hover { opacity: 0.75; }
 
 .submit-btn {
   background: var(--blurple);
@@ -274,20 +285,6 @@ nav {
   padding: 3px 7px;
 }
 
-.exp-tag {
-  font-size: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-left: 7px;
-  color: var(--grey);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1px 3px;
-  display: flex;
-  align-items: center;
-}
-
 .card h2 {
   font-size: 14px;
   font-weight: 700;
@@ -474,7 +471,8 @@ footer a:hover { text-decoration: underline; }
   <div class="nav-right">
     <span class="nav-stat"><strong id="nav-kill-counter">0</strong> kills</span>
     <span class="nav-stat"><strong>2026</strong> latest kill</span>
-    <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Submit a kill</button>
+    <a class="socials" href="https://github.com/Whomsky/killedbydiscord.com" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="var(--black)" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg></a>
+    <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Report a murder</button>
   </div>
 </nav>
 
@@ -483,7 +481,7 @@ footer a:hover { text-decoration: underline; }
     <div class="header-left">
       <p class="header-eyebrow">The Discord Graveyard</p>
       <h1>Killed by <span>Discord.</span></h1>
-      <p class="header-sub">Features &amp; programs Discord quietly put down. <br>Some were loved, most were forgotten — all are gone.</p>
+      <p class="header-sub">Features &amp; programs Discord put down in cold blood. <br>Some were loved, most were forgotten — all are gone.</p>
     </div>
     <div class="header-stats">
       <div class="stat">
@@ -509,6 +507,7 @@ footer a:hover { text-decoration: underline; }
       <button class="filter-btn" data-filter="removed">Removed</button>
       <button class="filter-btn" data-filter="discontinued">Discontinued</button>
       <button class="filter-btn" data-filter="abandoned">Abandoned</button>
+<!--  <button class="filter-btn" data-filter="revived">Revived</button> -->
     </div>
       <button class="info-btn" onclick="document.getElementById('info-modal').classList.add('open')">?</button>
     <span class="count-line"><span id="showing-count">0</span> entries</span>
@@ -521,7 +520,7 @@ footer a:hover { text-decoration: underline; }
 </div>
 
 <footer>
-  Not affiliated with Discord &nbsp;&middot;&nbsp; Paid for by <a href="https://github.com/Whomsky" target="_blank" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">Whomsky</a>, built by <a href="https://x.com/peppybug" target="_blank" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">peppybug</a>, with contributions from <a href="https://github.com/Dinorawrrrrr" target="_blank" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">Dinorawr</a>
+  Not affiliated with Discord &nbsp;&middot;&nbsp; Paid for by <a href="https://github.com/Whomsky" target="_blank" rel="noopener noreferrer" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">Whomsky</a>, built by <a href="https://x.com/peppybug" target="_blank" rel="noopener noreferrer" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">peppybug</a>, with contributions from <a href="https://github.com/Dinorawrrrrr" target="_blank" rel="noopener noreferrer" style="color:var(--black);font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)">Dinorawr</a>
 </footer>
 
 <script>
@@ -550,10 +549,11 @@ var items = [
   { name: "DM Wallpapers",                    type: "removed",        born: 2025, died: 2025, desc: "DM Wallpapers was an experimental, Nitro-only feature that allowed users to customize the background of their direct message conversation with another user." },
   { name: "Channel Icons",                    type: "removed",        born: 2023, died: 2023, desc: "Channel Icons were an experimental feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." }, 
   { name: "Wumpus Feedback Squad",            type: "discontinued",   born: 2023, died: 2024, desc: "Wumpus Feedback Squad was an invite-only server for early feedback and closed beta testing of new features." },
-  { name: "Emoji Packs",                      type: "removed",        born: 2023, died: 2023, desc: "Allowed users to use custom emojis from curated collections without needing the join the original server." },
-  { name: "Remix",                            type: "removed",        born: 2023, died: 2025, desc: "Remix was a feature that allowed users to edit (draw on, crop, etc) images within Discord." },
+  { name: "Emoji Packs",                      type: "removed",        born: 2023, died: 2023, desc: "Emoji Packs were collections of emojis from a server which could be equipped by users to be used anywhere on Discord, without needing the join the original server they're from." },
+  { name: "Remix",                            type: "removed",        born: 2023, died: 2025, desc: "Remix was a feature that allowed users to edit images in-app (add text, draw, etc)." },
   { name: "AutoMod AI",                       type: "removed",        born: 2021, died: 2021, desc: "An experimental feature for Discord's native AutoMod. It allowed server admins to enable AI moderation that would moderate and flag messages in accordance with the server rules." },
-  /*
+  { name: "LFG Tab",                          type: "removed",        born: 2018, died: 2020, desc: "The LFG (Looking for Group) Tab allowed users to search by recognized games to find and group up with others on Discord." },
+/*
   { name: "Dead Chat Prompt",                 type: "removed",        born: 2023, died: 2023, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
   { name: "Non-Nitro Profile Banners",        type: "removed",        born: 0, died: 0, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " },
   { name: "Potions",                          type: "removed",        born: 2024, died: 2024, desc: "Potions were an unreleased consumable feature that allowed users to buy certain Nitro-only perks for a limited time without having to commit to a Nitro subscription." },
@@ -736,6 +736,8 @@ function submitKill() {
       <p class="info-desc">A feature or program has been sunset, but remnants of it remain on the platform and may still be accessible.</p>
       <h4>Abandoned</h4>
       <p class="info-desc">A feature or program has been left for dead. Discord is not doing anything with it, and refuses to formally confirm its discontinuation or remove it.</p>
+<!--  <h4>Revived</h4>
+      <p class="info-desc">A feature or program was removed, discontinued, or abandoned but has since been brought back to life.</p> -->
     </div>
   </div>
 </div>
