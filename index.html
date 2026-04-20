@@ -572,6 +572,7 @@ function isVisible(item) {
 function hasDate(item) {
   return item.born > 0 && item.died > 0;
 }
+
 items.sort(function(a, b) {
   return (hasDate(b) - hasDate(a)) || (a.born - b.born);
 });
