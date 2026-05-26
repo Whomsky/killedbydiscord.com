@@ -93,6 +93,42 @@ nav {
 }
 .submit-btn:hover { background: transparent; color: var(--black); border: 1px solid var(--border); }
 
+.faq-btn {
+  background: var(--black);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.faq-btn:hover { background: transparent; color: var(--black); border: 1px solid var(--border); }
+
+.announcement-img { width: 25px; height: 25px; margin-right: 8px; }
+.announcement {
+  background: linear-gradient(-45deg, #5865F2, #e0e3ff, #944cff);
+  background-size: 300% 300%;
+  animation: gradient-shift 12.5s ease infinite;
+  border-radius: 8px;
+  color: var(--black);
+  font-size: 15px;
+  padding: 8px 12px;
+  margin: 0 auto 30px;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .header {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -370,7 +406,24 @@ footer a:hover { text-decoration: underline; }
   margin: 24px;
   position: relative;
   box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  max-height: 600px;
+  overflow-y: auto;
 }
+
+.modal2 {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 36px;
+  width: 100%;
+  max-width: 750px;
+  margin: 24px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
 .modal h2 {
   font-size: 18px;
   font-weight: 700;
@@ -460,7 +513,7 @@ footer a:hover { text-decoration: underline; }
 .modal-success p { color: var(--grey); font-size: 14px; }
 
 .info-desc {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   line-height: 1.5;
   font-size: 14px;
   color: var(--grey);
@@ -478,11 +531,15 @@ footer a:hover { text-decoration: underline; }
     <span class="nav-stat"><strong id="nav-kill-counter">0</strong> kills</span>
     <span class="nav-stat"><strong id="nav-days-since-kill">0</strong> since last kill</span>
     <a class="socials" href="https://github.com/Whomsky/killedbydiscord.com" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="var(--black)" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg></a>
+    <button class="faq-btn" onclick="document.getElementById('faq-modal').classList.add('open')">FAQ</button>
     <button class="submit-btn" onclick="document.getElementById('submit-modal').classList.add('open')">Report a murder</button>
   </div>
 </nav>
 
 <div class="header">
+  <div class="announcement" style="display:flex;"><img src="/images/wump.svg" class="announcement-img">
+    <p><b>May 26:</b> One new <i>abandoned</i> entry — also check out the new FAQ Tab!</p>
+  </div>
   <div class="header-inner">
     <div class="header-left">
       <p class="header-eyebrow">The Discord Graveyard</p>
@@ -564,6 +621,8 @@ var items = [
   { name: "Channel Banners",                  type: "removed",        visible: false,   born: 2021, died: 2021, desc: "We don't have a description for this yet. <br> Have a wump for now. <br> <img src='images/wump.svg' style='height: 4.5em; vertical-align: middle; margin: 10px 12px;'/>" },
   { name: "Non-Nitro Profile Banners",        type: "removed",        visible: false,   born: null, died: null, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " },
   { name: "Voice Filters",                    type: "removed",        visible: true,    born: 2025, died: 2025, desc: "Voice Filters were an experimental feature that allowed users to apply one of several pre-made filters (voice changers) to their microphone." },
+  { name: "Server Monetization",              type: "abandoned",      visible: true,    born: 2022, died: 2024, desc: "Server Monetization allows servers to set up a shop and sell subscriptions with perks (similar in functionality to Twitch) and downloadables, such as 3D models, music or wallpapers." },   
+  { name: "Kaomoji Tab",                      type: "undefined",      visible: false,   born: 2026, died: null, desc: "The Kaomoji Tab was a section in the emoji picker dedicated to Kaomojis (Japanese emoticons), such as:  ⸜(｡˃ ᵕ ˂ )⸝♡  ₍^. .^₎⟆" },    
 ]
 
 function isVisible(item) {
@@ -762,8 +821,26 @@ function submitKill() {
       <p class="info-desc">A feature or program has been sunset, but remnants of it remain on the platform and may still be accessible.</p>
       <h4>Abandoned</h4>
       <p class="info-desc">A feature or program has been left for dead. Discord is not doing anything with it, and refuses to formally confirm its discontinuation or remove it.</p>
-<!--  <h4>Revived</h4>
-      <p class="info-desc">A feature or program was removed, discontinued, or abandoned but has since been brought back to life.</p> -->
+      <hr style="margin:21px 0; border:none; border-top:1px solid #ccc;">
+      <h4>Revived</h4>
+      <p class="info-desc">A feature or program was removed, discontinued, or abandoned but has since been brought back to life.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ MODAL -->
+<div class="modal-overlay" id="faq-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal2">
+    <button class="modal-close" onclick="document.getElementById('faq-modal').classList.remove('open')">&times;</button>
+    <h2>Frequently asked questions</h2>
+    <p class="modal-sub">Nobody actually asked them, but we thought it's good to put some things on here anyway.</p>
+    <div style="line-height:1.6;">
+      <h4>What is killedbydiscord.com?</h4> 
+      <p class="info-desc">killedbydiscord.com is inspired by killedbygoogle.com. Our aim is to document features and other services that have been removed, discontinued, or abandoned by Discord for informational purposes.</p>
+      <h4>Why are only a few select experimental features documented?</h4>
+      <p class="info-desc">We only list experimental features if they've had a rollout. That is to say, they were available to the public as part of a test. Otherwise as far the public is concerned, it never existed in the first place.</p>
+      <h4>How do you decide something has been abandoned?</h4>
+      <p class="info-desc">It's subjective. When we believe something has been neglected for long enough, we may consider it abandoned. This decision may not always be accurate, especially concerning special or experimental features and invite-only programs that are available to a small subset of users or servers only.<br><br>For our intents and purposes, abandonment isn't death, so we do not reset the <i>days since last kill</i>.</p>
     </div>
   </div>
 </div>
