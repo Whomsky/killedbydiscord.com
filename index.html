@@ -537,8 +537,8 @@ footer a:hover { text-decoration: underline; }
 </nav>
 
 <div class="header">
-  <div class="announcement" style="display:none;"><img src="/images/wump.svg" class="announcement-img">
-    <p></p>
+  <div class="announcement" style="display:flex;"><img src="/images/wump.svg" class="announcement-img">
+    <p>Verification program (legacy requirements) discontinued. Currently only available to game developers &middot; <a href="https://support.discord.com/hc/en-us/articles/360001107231-Discord-Verified-Server-Program-FAQ" target="_blank" rel="noopener noreferrer">Learn more</a></p>
   </div>
   <div class="header-inner">
     <div class="header-left">
@@ -591,7 +591,7 @@ footer a:hover { text-decoration: underline; }
 var items = [
   { name: "OG Blurple",                              type: "removed",        visible: true,    born: 2015, died: 2021, desc: "OG Blurple (<span style='color: #7289d9;'><b>#7289d9</b></span>) was Discord's primary branding color. It was changed to a darker shade during Discord's rebrand in 2021." },
   { name: "Discriminators",                          type: "discontinued",   visible: true,    born: 2015, died: 2023, desc: "Discriminators were unique identifiers used to distinguish users on Discord, allowing for up to 9,999 users to share the same username. Bots were not transitioned to the new username format and still use discriminators today." },
-  { name: "Nitro (Classic)",                         type: "discontinued",   visible: true,    born: 2015, died: 2022, desc: "There was a time when there was just 'Nitro'. When a new tier with more perks was added, 'Classic' was eventually superseded by 'Basic'. Existing subscribers with Classic continue to enjoy its perks until they decide to up-/ or downgrade or cancel their subscription." },
+  { name: "Nitro (Classic)",                         type: "discontinued",   visible: true,    born: 2015, died: 2022, desc: "There was a time when there was just 'Nitro'. When a new tier with more perks was added, 'Classic' was eventually superseded by 'Basic'.<br><br>Existing subscribers with Classic continue to enjoy its perks until they decide to up-/ or downgrade or cancel their subscription." },
   { name: "Partner Program",                         type: "abandoned",      visible: true,    born: 2015, died: 2023, desc: "The Partner Program is aimed at recognizing and highlighting the most outstanding servers on the platform. It is no longer accepting new applicants as of October 2023." },
   { name: "HypeSquad Events",                        type: "discontinued",   visible: true,    born: 2015, died: 2017, desc: "Once known just as 'HypeSquad'. The program rewarded users with a badge and merchandise for representing Discord at in-person events and for hosting their own." },
   { name: "HypeSquad Houses",                        type: "discontinued",   visible: true,    born: 2017, died: 2025, desc: "When HypeSquad was split into two branches, three HypeSquad Houses were formed. Users could take a 'flavor quiz' to be sorted into one of the houses, and could represent it during various events on the platform." },
@@ -602,7 +602,7 @@ var items = [
   { name: "Discord Moderators Academy",              type: "discontinued",   visible: true,    born: 2021, died: 2022, desc: "The Moderators Academy was a program designed to support server moderators. It provided resources, guidelines, and best practices for effective moderation. Involved members could qualify for an exclusive badge." },
   { name: "Stage Discovery",                         type: "removed",        visible: true,    born: 2021, died: 2021, desc: "Stage Discovery was a feature that allowed users to discover and join live audio events happening in various servers, without being a member of those servers. It aimed to increase engagement and participation in live events." },
   { name: "Vanity Invite (Standalone Perk)",         type: "removed",        visible: true,    born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock a vanity invite for 5 boosts, without the need of collecting 14 boosts to reach level 3." },
-  { name: "Guilds",                                  type: "removed",        visible: true,    born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as a standalone feature." },
+  { name: "Guilds",                                  type: "removed",        visible: true,    born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\".<br><br>This server type was removed, but everything other than the 200 member limit was later re-introduced as standalone features." },
   { name: "Active Developer Badge",                  type: "removed",        visible: true,    born: 2022, died: 2026, desc: "A profile badge for developers who had a bot with slash command support. It was ultimately removed, citing \"heavy amount of support issues with little benefit to developers\"." },
   { name: "Discord Games Lab",                       type: "removed",        visible: true,    born: 2021, died: 2025, desc: "Games Lab was one of Discord's official servers for everything activities. It was the main place to leave feedback about activities, and allowed users to playtest select activities early." },
   { name: "Soundmojis",                              type: "removed",        visible: true,    born: 2024, died: 2024, desc: "Soundmojis were a new and experimental type of emoji that could play sounds when used in messages, just how users can play sounds using the Soundboard in voice calls." },
@@ -623,7 +623,8 @@ var items = [
   { name: "Voice Filters",                           type: "removed",        visible: true,    born: 2025, died: 2025, desc: "Voice Filters were an experimental feature that allowed users to apply one of several pre-made filters (voice changers) to their microphone." },
   { name: "Server Monetization",                     type: "abandoned",      visible: true,    born: 2022, died: 2024, desc: "Server Monetization allows servers to set up a shop and sell subscriptions with perks (similar in functionality to Twitch) and downloadables, such as 3D models, music or wallpapers." },   
   { name: "Kaomoji Tab",                             type: "undefined",      visible: false,   born: 2026, died: null, desc: "The Kaomoji Tab was a section in the emoji picker dedicated to Kaomojis (Japanese emoticons), such as:  ⸜(｡˃ ᵕ ˂ )⸝♡  ₍^. .^₎⟆" },
-  { name: "250MB Upload Limit (Standalone Perk)",    type: "removed",        visible: false,   born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock an increased upload limit of 250MB for 4 boosts for all members." },    
+  { name: "250MB Upload Limit (Standalone Perk)",    type: "removed",        visible: false,   born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock an increased upload limit of 250MB for 4 boosts for all members." },
+  { name: "Verification Program (legacy)",           type: "discontinued",   visible: true,    born: 2017, died: 2026, desc: "The verification program was aimed towards recognizing official servers of well-known companies, games, musicians and public figures by granting them a green checkmark.<br><br>This broader program has now been discontinued, and verification is currently exclusively available to game developers." },
 ]
 
 function isVisible(item) {
@@ -645,7 +646,7 @@ function getAge(born, died) {
 }
 
 function getDaysSinceLastKill() {
-  var [day, month, year] = '13/04/2026'.split('/');
+  var [day, month, year] = '16/06/2026'.split('/');
   var lastKillDate = new Date(year, month - 1, day);
   return Math.floor((new Date() - lastKillDate) / (1000 * 60 * 60 * 24));
 }
