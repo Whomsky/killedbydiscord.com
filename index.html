@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta property="og:title" content="The Discord Graveyard"/>
 <meta property="og:description" content="Explore the features and programs Discord put down in cold blood. Some were loved, most were forgotten — all are gone."/>
-<meta property="og:image" content="https://killedbydiscord.com/wump.svg"/>
+<meta property="og:image" content="https://killedbydiscord.com/images/rip.png"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://killedbydiscord.com"/>
 <meta name="theme-color" content="#f5f5f3">
-<link rel="icon" type="image/x-icon" href="/wump.svg">
+<link rel="icon" type="image/png" href="/images/rip.png"/>
 <title>Killed by Discord</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
@@ -92,7 +92,43 @@ nav {
   cursor: pointer;
   transition: all .15s;
 }
-.submit-btn:hover { background: transparent; color: var(--white); border: 1px solid var(--border); }
+.submit-btn:hover { background: transparent; color: var(--black); border: 1px solid var(--border); }
+
+.faq-btn {
+  background: var(--black);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.faq-btn:hover { background: transparent; color: var(--black); border: 1px solid var(--border); }
+
+.announcement-img { width: 25px; height: 25px; margin-right: 8px; }
+.announcement {
+  background: linear-gradient(-45deg, #5865F2, #e0e3ff, #944cff);
+  background-size: 300% 300%;
+  animation: gradient-shift 12.5s ease infinite;
+  border-radius: 8px;
+  color: var(--black);
+  font-size: 15px;
+  padding: 8px 12px;
+  margin: 0 auto 30px;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .faq-btn {
   background: var(--white);
@@ -174,7 +210,7 @@ nav {
 }
 
 .header-stats { display: flex; gap: 36px; flex-shrink: 0; padding-bottom: 4px; }
-.stat { text-align: right; }
+.stat { text-align: center; }
 
 .stat-num {
   font-size: 2rem;
@@ -505,7 +541,7 @@ footer {
 .modal-success p { color: var(--grey-light); font-size: 14px; }
 
 .info-desc {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   line-height: 1.5;
   font-size: 14px;
   color: var(--grey-light);
@@ -544,8 +580,8 @@ footer {
         <span class="stat-label">Kills</span>
       </div>
       <div class="stat">
-        <span class="stat-num">2026</span>
-        <span class="stat-label">Latest kill</span>
+        <span class="stat-num" id="days-since-kill">0</span>
+        <span class="stat-label">Since last kill</span>
       </div>
     </div>
   </div>
@@ -581,45 +617,60 @@ footer {
 <script>
 
 var items = [
-  { name: "OG Blurple",                       type: "removed",        born: 2015, died: 2021, desc: "OG Blurple (<span style='color: #7289d9;'><b>#7289d9</b></span>) was Discord's primary branding color. It was changed to a darker shade during Discord's rebrand in 2021." },
-  { name: "Discriminators",                   type: "discontinued",   born: 2015, died: 2023, desc: "Discriminators were unique identifiers used to distinguish users on Discord, allowing for up to 9,999 users to share the same username. Bots were not transitioned to the new username format and still use discriminators today." },
-  { name: "Nitro (Classic)",                  type: "discontinued",   born: 2015, died: 2022, desc: "There was a time when there was just 'Nitro'. When a new tier with more perks was added, 'Classic' was eventually superseded by 'Basic'. Existing subscribers with Classic continue to enjoy its perks until they decide to up-/ or downgrade or cancel their subscription." },
-  { name: "Partner Program",                  type: "abandoned",      born: 2015, died: 2023, desc: "The Partner Program is aimed at recognizing and highlighting the most outstanding servers on the platform. It is no longer accepting new applicants as of October 2023." },
-  { name: "HypeSquad Events",                 type: "discontinued",   born: 2015, died: 2017, desc: "Once known just as 'HypeSquad'. The program rewarded users with a badge and merchandise for representing Discord at in-person events and for hosting their own." },
-  { name: "HypeSquad Houses",                 type: "discontinued",   born: 2017, died: 2025, desc: "When HypeSquad was split into two branches, three HypeSquad Houses were formed. Users could take a 'flavor quiz' to be sorted into one of the houses, and could represent it during various events on the platform." },
-  { name: "Channel Summaries",                type: "abandoned",      born: 2023, died: 2024, desc: "Channel Summaries is an unreleased feature that summarizes recent conversations within channels using AI. While it never shipped, it is still functional and may be found in servers that were part of its closed beta test." },
-  { name: "Server Home",                      type: "removed",        born: 2022, died: 2023, desc: "Server Home was a feature that provided a build-in 'Starboard'-like functionality. It would dynamically highlight trending conversations based on user interactions, and allow server mods to put messages in the spotlight." },
-  { name: "Game Store",                       type: "discontinued",   born: 2017, died: 2021, desc: "There was a time when developers could list and sell their games directly on Discord. Users would unlock access to a rotating selection of games with an active Nitro subscription." },
-  { name: "Clyde AI Chatbot",                 type: "removed",        born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was shut down later that same year for an undisclosed reason." },
-  { name: "Discord Moderators Academy",       type: "discontinued",   born: 2021, died: 2022, desc: "The Moderators Academy was a program designed to support server moderators. It provided resources, guidelines, and best practices for effective moderation. Involved members could qualify for an exclusive badge." },
-  { name: "Stage Discovery",                  type: "removed",        born: 2021, died: 2021, desc: "Stage Discovery was a feature that allowed users to discover and join live audio events happening in various servers, without being a member of those servers. It aimed to increase engagement and participation in live events." },
-  { name: "Vanity Invite (Individual Perk)",  type: "removed",        born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock a vanity invite for 5 boosts, without the need of collecting 14 boosts to reach level 3." },
-  { name: "Guilds",                           type: "removed",        born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\". This server type was removed, but everything other than the 200 member limit was re-introduced as a standalone feature." },
-  { name: "Active Developer Badge",           type: "removed",        born: 2022, died: 2026, desc: "A profile badge for developers who had a bot with slash command support. It was ultimately removed, citing \"heavy amount of support issues with little benefit to developers\"." },
-  { name: "Discord Games Lab",                type: "removed",        born: 2021, died: 2025, desc: "Games Lab was one of Discord's official servers for everything activities. It was the main place to leave feedback about activities, and allowed users to playtest select activities early." },
-  { name: "Soundmojis",                       type: "removed",        born: 2024, died: 2024, desc: "Soundmojis were a new and experimental type of emoji that could play sounds when used in messages, just how users can play sounds using the Soundboard in voice calls." },
-  { name: "ICYMI (In Case You Missed It)",    type: "removed",        born: 2025, died: 2026, desc: "ICYMI was the spiritual successor of 'Channel Summaries'. ICYMI allowed you to catch up on server messages, activities, and more that you might've missed while you were offline." },          
-  { name: "Cloudflare WARP+",                 type: "removed",        born: 2026, died: 2026, desc: "Cloudflare WARP+ was planned to be included as a perk in Nitro, granting subscribers access to the service directly in-app." },
-  { name: "DM Wallpapers",                    type: "removed",        born: 2025, died: 2025, desc: "DM Wallpapers was an experimental, Nitro-only feature that allowed users to customize the background of their direct message conversation with another user." },
-  { name: "Channel Icons",                    type: "removed",        born: 2023, died: 2023, desc: "Channel Icons were an experimental feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." }, 
-  { name: "Wumpus Feedback Squad",            type: "discontinued",   born: 2023, died: 2024, desc: "Wumpus Feedback Squad was an invite-only, official Discord server for early feedback and closed beta testing of new features." },
-  { name: "Emoji Packs",                      type: "removed",        born: 2023, died: 2023, desc: "Emoji Packs were collections of emojis from a server which could be equipped by users to be used anywhere on Discord, without needing the join the original server they're from." },
-  { name: "Remix",                            type: "removed",        born: 2023, died: 2025, desc: "Remix was a feature that allowed users to edit images in-app (add text, draw, etc)." },
-  { name: "AutoMod AI",                       type: "removed",        born: 2021, died: 2021, desc: "An experimental feature for Discord's native AutoMod. It allowed server admins to enable AI moderation that would moderate and flag messages in accordance with the server rules." },
-  { name: "LFG Tab",                          type: "removed",        born: 2018, died: 2020, desc: "The LFG (Looking for Group) Tab allowed users to search by recognized games to find and group up with others on Discord." },
-  { name: "Mod Queue",                        type: "abandoned",      born: 2025, died: 2025, desc: "Mod Queue introduces a built-in way to report server members directly to its moderators. Reports appear and can be resolved in a specialized forum channel." },
-/*
-With how things are going, this is being staged here to be included in the foreseeable future
-  { name: "Discord Admins",                   type: "abandoned",      born: 2022, died: 2025, desc: "Discord Admins (DA) is one of Discord's official servers. It offers a space for server admins and mods to discuss best practices for community management, moderation, safety, and more." },
-
-Need more info on these
-  { name: "Dead Chat Prompt",                 type: "removed",        born: 2023, died: 2023, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
-  { name: "Channel Banners",                  type: "removed",        born: 2021, died: 2021, desc: "We don't have a description for this yet. <br> Have a wump for now. <br> <img src='/wump.svg' style='height: 4.5em; vertical-align: middle; margin: 10px 12px;'/>" },
-  { name: "Non-Nitro Profile Banners",        type: "removed",        born: 0, died: 0, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " },
-*/
+  { name: "OG Blurple",                              type: "removed",        visible: true,    born: 2015, died: 2021, desc: "OG Blurple (<span style='color: #7289d9;'><b>#7289d9</b></span>) was Discord's primary branding color. It was changed to a darker shade during Discord's rebrand in 2021." },
+  { name: "Discriminators",                          type: "discontinued",   visible: true,    born: 2015, died: 2023, desc: "Discriminators were unique identifiers used to distinguish users on Discord, allowing for up to 9,999 users to share the same username. Bots were not transitioned to the new username format and still use discriminators today." },
+  { name: "Nitro (Classic)",                         type: "discontinued",   visible: true,    born: 2015, died: 2022, desc: "There was a time when there was just 'Nitro'. When a new tier with more perks was added, 'Classic' was eventually superseded by 'Basic'.<br><br>Existing subscribers with Classic continue to enjoy its perks until they decide to up-/ or downgrade or cancel their subscription." },
+  { name: "Partner Program",                         type: "abandoned",      visible: true,    born: 2015, died: 2023, desc: "The Partner Program is aimed at recognizing and highlighting the most outstanding servers on the platform. It is no longer accepting new applicants as of October 2023." },
+  { name: "HypeSquad Events",                        type: "discontinued",   visible: true,    born: 2015, died: 2017, desc: "Once known just as 'HypeSquad'. The program rewarded users with a badge and merchandise for representing Discord at in-person events and for hosting their own." },
+  { name: "HypeSquad Houses",                        type: "discontinued",   visible: true,    born: 2017, died: 2025, desc: "When HypeSquad was split into two branches, three HypeSquad Houses were formed. Users could take a 'flavor quiz' to be sorted into one of the houses, and could represent it during various events on the platform." },
+  { name: "Channel Summaries",                       type: "abandoned",      visible: true,    born: 2023, died: 2024, desc: "Channel Summaries is an unreleased feature that summarizes recent conversations within channels using AI. While it never shipped, it is still functional and may be found in servers that were part of its closed beta test." },
+  { name: "Server Home",                             type: "removed",        visible: true,    born: 2022, died: 2023, desc: "Server Home was a feature that provided a build-in 'Starboard'-like functionality. It would dynamically highlight trending conversations based on user interactions, and allow server mods to put messages in the spotlight." },
+  { name: "Game Store",                              type: "discontinued",   visible: true,    born: 2017, died: 2021, desc: "There was a time when developers could list and sell their games directly on Discord. Users would unlock access to a rotating selection of games with an active Nitro subscription." },
+  { name: "Clyde AI Chatbot",                        type: "removed",        visible: true,    born: 2023, died: 2023, desc: "Clyde was your very own AI chatbot for your server powered by ChatGPT. It was shut down later that same year for an undisclosed reason." },
+  { name: "Discord Moderators Academy",              type: "discontinued",   visible: true,    born: 2021, died: 2022, desc: "The Moderators Academy was a program designed to support server moderators. It provided resources, guidelines, and best practices for effective moderation. Involved members could qualify for an exclusive badge." },
+  { name: "Stage Discovery",                         type: "removed",        visible: true,    born: 2021, died: 2021, desc: "Stage Discovery was a feature that allowed users to discover and join live audio events happening in various servers, without being a member of those servers. It aimed to increase engagement and participation in live events." },
+  { name: "Vanity Invite (Standalone Perk)",         type: "removed",        visible: true,    born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock a vanity invite for 5 boosts, without the need of collecting 14 boosts to reach level 3." },
+  { name: "Guilds",                                  type: "removed",        visible: true,    born: 2024, died: 2025, desc: "Guilds were small servers that supported up to 200 members, allowed the creation of a clan tag, a server profile, and were \"Apply-to-Join\".<br><br>This server type was removed, but everything other than the 200 member limit was later re-introduced as standalone features." },
+  { name: "Active Developer Badge",                  type: "removed",        visible: true,    born: 2022, died: 2026, desc: "A profile badge for developers who had a bot with slash command support. It was ultimately removed, citing \"heavy amount of support issues with little benefit to developers\"." },
+  { name: "Discord Games Lab",                       type: "removed",        visible: true,    born: 2021, died: 2025, desc: "Games Lab was one of Discord's official servers for everything activities. It was the main place to leave feedback about activities, and allowed users to playtest select activities early." },
+  { name: "Soundmojis",                              type: "removed",        visible: true,    born: 2024, died: 2024, desc: "Soundmojis were a new and experimental type of emoji that could play sounds when used in messages, just how users can play sounds using the Soundboard in voice calls." },
+  { name: "ICYMI (In Case You Missed It)",           type: "removed",        visible: true,    born: 2025, died: 2026, desc: "ICYMI was the spiritual successor of 'Channel Summaries'. ICYMI allowed you to catch up on server messages, activities, and more that you might've missed while you were offline." },          
+  { name: "Cloudflare WARP+",                        type: "removed",        visible: true,    born: 2026, died: 2026, desc: "Cloudflare WARP+ was planned to be included as a perk in Nitro, granting subscribers access to the service directly in-app." },
+  { name: "DM Wallpapers",                           type: "removed",        visible: true,    born: 2025, died: 2025, desc: "DM Wallpapers was an experimental, Nitro-only feature that allowed users to customize the background of their direct message conversation with another user." },
+  { name: "Channel Icons",                           type: "removed",        visible: true,    born: 2023, died: 2023, desc: "Channel Icons were an experimental feature that allowed servers to set an emoji as an icon for their channels. It aimed to remove the need for users to insert unicode emojis into channel names and improve accessibility." }, 
+  { name: "Wumpus Feedback Squad",                   type: "discontinued",   visible: true,    born: 2023, died: 2024, desc: "Wumpus Feedback Squad was an invite-only, official Discord server for early feedback and closed beta testing of new features." },
+  { name: "Emoji Packs",                             type: "removed",        visible: true,    born: 2023, died: 2023, desc: "Emoji Packs were collections of emojis from a server which could be equipped by users to be used anywhere on Discord, without needing the join the original server they're from." },
+  { name: "Remix",                                   type: "removed",        visible: true,    born: 2023, died: 2025, desc: "Remix was a feature that allowed users to edit images in-app (add text, draw, etc)." },
+  { name: "AutoMod AI",                              type: "removed",        visible: true,    born: 2021, died: 2021, desc: "An experimental feature for Discord's native AutoMod. It allowed server admins to enable AI moderation that would moderate and flag messages in accordance with the server rules." },
+  { name: "LFG Tab",                                 type: "removed",        visible: true,    born: 2018, died: 2020, desc: "The LFG (Looking for Group) Tab allowed users to search by recognized games to find and group up with others on Discord." },
+  { name: "Mod Queue",                               type: "abandoned",      visible: true,    born: 2025, died: 2025, desc: "Mod Queue introduces a built-in way to report server members directly to its moderators. Reports appear and can be resolved in a specialized forum channel." },
+  { name: "Discord Admins",                          type: "abandoned",      visible: false,   born: 2022, died: 2025, desc: "Discord Admins (DA) is one of Discord's official servers. It offers a space for server admins and mods to discuss best practices for community management, moderation, safety, and more." },
+  { name: "Dead Chat Prompt",                        type: "removed",        visible: false,   born: 2023, died: 2023, desc: "The 'Dead Chat Prompt' was an experimental feature aimed at reviving inactive channels by prompting users to engage in conversation." },
+  { name: "Channel Banners",                         type: "removed",        visible: false,   born: 2021, died: 2021, desc: "We don't have a description for this yet. <br> Have a wump for now. <br> <img src='images/wump.svg' style='height: 4.5em; vertical-align: middle; margin: 10px 12px;'/>" },
+  { name: "Non-Nitro Profile Banners",               type: "removed",        visible: false,   born: null, died: null, desc: "Non-Nitro Profile banners was an experimental change that allowed users to equip a banner without having Nitro. " },
+  { name: "Voice Filters",                           type: "removed",        visible: true,    born: 2025, died: 2025, desc: "Voice Filters were an experimental feature that allowed users to apply one of several pre-made filters (voice changers) to their microphone." },
+  { name: "Server Monetization",                     type: "abandoned",      visible: true,    born: 2022, died: 2024, desc: "Server Monetization allows servers to set up a shop and sell subscriptions with perks (similar in functionality to Twitch) and downloadables, such as 3D models, music or wallpapers." },   
+  { name: "Kaomoji Tab",                             type: "undefined",      visible: false,   born: 2026, died: null, desc: "The Kaomoji Tab was a section in the emoji picker dedicated to Kaomojis (Japanese emoticons), such as:  ⸜(｡˃ ᵕ ˂ )⸝♡  ₍^. .^₎⟆" },
+  { name: "250MB Upload Limit (Standalone Perk)",    type: "removed",        visible: false,   born: 2025, died: 2025, desc: "Discord trialed a standalone boosting perk that allowed servers to unlock an increased upload limit of 250MB for 4 boosts for all members." },
+  { name: "Verification Program (legacy)",           type: "discontinued",   visible: true,    born: 2017, died: 2026, desc: "The verification program was aimed towards recognizing official servers of well-known companies, games, musicians and public figures by granting them a green checkmark.<br><br>This broader program has now been discontinued, and verification is currently exclusively available to game developers." },
+  { name: "Media Channels",                          type: "abandoned",      visible: true,    born: 2022, died: 2024, desc: "Media Channels are an experimental channel similar to Forums, with the main difference being that they put more focus on media uploads (images, videos and other files).<br><br>Media Channels are currently only available to servers with Server Monetization enabled." },
+  { name: "Splash Potions",                          type: "removed",        visible: false,   born: null, died: null, desc: "Potions were an experimental feature that allowed users to purchase select premium perks for a limited time, such as a larger file upload limit or higher streaming quality.<br><br>The effect applied to the server / channel it was used in, granting all members the buff."},
+  { name: "Server Theme",                            type: "undefined",      visible: false,   born: 2026, died: null, desc: "Server Themes was an experimental feature that allowed server admins to set a custom theme on the server for all members. The feature was locked behind 3 server boosts."},
+  { name: "Official Messages",                       type: "undefined",      visible: false,   born: 2026, died: null, desc: "Official Messages were an experimental feature available only on verified servers. Servers could to configure an unique highlight color (similar to that of mentions) and apply it to messages, thus marking them as \"official\"."},
+  { name: "Nitro Squad",                             type: "undefined",      visible: false,   born: 2026, died: null, desc: "Nitro Squad was a new Nitro tier. A single Nitro subscription (at a discounted price) that could be shared by up to 6 people. Notably, only the Squad leader would get the 2 boosts included with Nitro, but not its members."},
 ]
 
-.sort(function(a, b) { return a.born - b.born; });
+function isVisible(item) {
+  return item.visible !== false;
+}
+
+function hasDate(item) {
+  return item.born > 0 && item.died > 0;
+}
+
+items.sort(function(a, b) {
+  return (hasDate(b) - hasDate(a)) || (a.born - b.born);
+});
 
 function getAge(born, died) {
   var d = died - born;
@@ -646,6 +697,7 @@ var emptyState = document.getElementById('empty');
 var activeFilter = 'all';
 
 function render(list) {
+  list = list.filter(isVisible);
   grid.innerHTML = '';
   if (!list.length) { emptyState.style.display = 'block'; showingCount.textContent = '0'; return; }
   emptyState.style.display = 'none';
@@ -659,16 +711,16 @@ function render(list) {
     svg += '<rect x="3" y="59" width="54" height="5" rx="1.5" fill="none" stroke="#aaa9a5" stroke-width="1.4"/>';
     svg += '<path d="M13 54 L13 21 Q13 5 30 5 Q47 5 47 21 L47 54 Z" fill="none" stroke="#aaa9a5" stroke-width="1.4"/>';
     svg += '<path d="M18 52 L18 22 Q18 10 30 10 Q42 10 42 22 L42 52" fill="none" stroke="#aaa9a5" stroke-width="0.8" stroke-dasharray="0"/>';
-    svg += '<text x="30" y="36" text-anchor="middle" font-size="8" font-weight="700" fill="#aaa9a5" letter-spacing="2">RIP</text>';
+    svg += '<text x="30" y="35" text-anchor="middle" font-size="8.7" font-weight="700" fill="#aaa9a5" letter-spacing="0">R.I.P</text>';
     svg += '</svg>';
   card.innerHTML =
       '<div class="card-top">' +
         svg +
         '<span class="tag">' + item.type + '</span>' +
       '</div>' +
-      '<h2>' + item.name + (item.experimental ? '<span class="exp-tag">Experimental</span>' : '') + '</h2>' +
+      '<h2>' + item.name + '</h2>' +
       (item.desc ? '<p>' + item.desc + '</p>' : '') +
-      (item.born ? '<div class="card-footer"><span class="year-range">' + item.born + ' &ndash; ' + item.died + '</span><span class="age-badge">' + getAge(item.born, item.died) + ' old</span></div>' : '');
+      (hasDate(item) ? '<div class="card-footer"><span class="year-range">' + item.born + ' &ndash; ' + item.died + '</span><span class="age-badge">' + getAge(item.born, item.died) + ' old</span></div>' : '');
     grid.appendChild(card);
   });
 }
@@ -691,7 +743,7 @@ filterBtns.forEach(function(btn) {
 });
 
 searchInput.addEventListener('input', applyFilters);
-render(items);
+applyFilters();
 
 // Animated kill counter
 function animateCounter(el, target, duration) {
@@ -705,10 +757,11 @@ function animateCounter(el, target, duration) {
 }
 
 window.addEventListener('load', function() {
+  var visibleCount = items.filter(isVisible).length;
   var el = document.getElementById('kill-counter')
-  if (el) animateCounter(el, items.length, 1200);
+  if (el) animateCounter(el, visibleCount, 1800);
   var el = document.getElementById('nav-kill-counter')
-  if (el) animateCounter(el, items.length, 1200);
+  if (el) animateCounter(el, visibleCount, 1800);
 });
 
 function submitKill() {
@@ -805,8 +858,28 @@ function submitKill() {
       <p class="info-desc">A feature or program has been sunset, but remnants of it remain on the platform and may still be accessible.</p>
       <h4>Abandoned</h4>
       <p class="info-desc">A feature or program has been left for dead. Discord is not doing anything with it, and refuses to formally confirm its discontinuation or remove it.</p>
-<!--  <h4>Revived</h4>
-      <p class="info-desc">A feature or program was removed, discontinued, or abandoned but has since been brought back to life.</p> -->
+      <hr style="margin:21px 0; border:none; border-top:1px solid #ccc;">
+      <h4>Revived</h4>
+      <p class="info-desc">A feature or program was removed, discontinued, or abandoned but has since been brought back to life.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ MODAL -->
+<div class="modal-overlay" id="faq-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal2">
+    <button class="modal-close" onclick="document.getElementById('faq-modal').classList.remove('open')">&times;</button>
+    <h2>Frequently asked questions</h2>
+    <p class="modal-sub">Nobody actually asked them, but we thought it's good to put some things on here anyway.</p>
+    <div style="line-height:1.6;">
+      <h4>What is killedbydiscord.com?</h4> 
+      <p class="info-desc">killedbydiscord.com is inspired by killedbygoogle.com. Our aim is to document features and other services that have been removed, discontinued, or abandoned by Discord for informational purposes.</p>
+      <h4>Why are only a few select experimental features documented?</h4>
+      <p class="info-desc">We only list experimental features if they've had a rollout. That is to say, they were available to the public as part of a test. Otherwise as far the public is concerned, it never existed in the first place.</p>
+      <h4>What's the longest recorded time between kills?</h4>
+      <p class="info-desc">Since killedbydiscord.com launched, our longest recorded time between kills is <b>64 days</b>.</p>
+      <h4>How do you decide something has been abandoned?</h4>
+      <p class="info-desc">It's subjective. When we believe something has been neglected for long enough, we may consider it abandoned. This decision may not always be accurate, especially concerning special or experimental features and invite-only programs that are available to a small subset of users or servers only.<br><br>For our intents and purposes, abandonment isn't death, so we do not reset the <i>days since last kill</i>.</p>
     </div>
   </div>
 </div>
