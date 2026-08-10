@@ -541,7 +541,7 @@ footer {
 .modal-success p { color: var(--grey-light); font-size: 14px; }
 
 .info-desc {
-  margin-bottom: 16px;
+  margin-bottom: 17.5px;
   line-height: 1.5;
   font-size: 14px;
   color: var(--grey-light);
@@ -566,7 +566,7 @@ footer {
 
 <div class="header">
   <div class="announcement" style="display:none;"><img src="/images/wump.svg" class="announcement-img">
-    <p>killedbydiscord.com but in dark mode!</a></p>
+    <p>Coxi stinks</a></p>
   </div>
   <div class="header-inner">
     <div class="header-left">
@@ -611,7 +611,7 @@ footer {
 </div>
 
 <footer>
-  Not affiliated with Discord &nbsp;&middot;&nbsp; Paid for by <a href="https://github.com/Whomsky" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">Whomsky</a>, built by <a href="https://x.com/peppybug" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">peppybug</a>, with contributions from <a href="https://github.com/Dinorawrrrrr" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">Dinorawr</a>
+  Not affiliated with Discord &nbsp;&middot;&nbsp; Paid for by <a href="https://github.com/Whomsky" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">Whomsky</a>, built by <a href="https://x.com/peppybug" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">peppybug</a>, and maintained by <a href="https://github.com/Dinorawrrrrr" target="_blank" rel="noopener noreferrer" style="color:var(--grey-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--white)">Dinorawr</a>
 </footer>
 
 <script>
@@ -749,7 +749,7 @@ applyFilters();
 // Animated kill counter
 function animateCounter(el, target, duration) {
   var start = 0;
-  var step = target / (duration / 16);
+  var step = target / (duration / 21);
   var timer = setInterval(function() {
     start += step;
     if (start >= target) { start = target; clearInterval(timer); }
@@ -876,7 +876,9 @@ function submitKill() {
       <h4>What is killedbydiscord.com?</h4> 
       <p class="info-desc">killedbydiscord.com is inspired by killedbygoogle.com. Our aim is to document features and other services that have been removed, discontinued, or abandoned by Discord for informational purposes.</p>
       <h4>Why are only a few select experimental features documented?</h4>
-      <p class="info-desc">We only list experimental features if they've had a rollout. That is to say, they were available to the public as part of a test. Otherwise as far the public is concerned, it never existed in the first place.</p>
+      <p class="info-desc">We only document experimental features if they were tested in the wild with real users, and not just internally by employees or bug hunters. Otherwise as far everyone is concerned, it never existed.</p>
+      <h4>What makes a feature experimental?</h4>
+      <p class="info-desc">We consider something "experimental" if it went through <a href="https://en.wikipedia.org/wiki/A/B_testing" target="_blank" rel="noopener noreferrer" style="color:var(--blurple);font-weight:700;">A/B testing</a>. This means that everyone is randomly sorted into at least two groups, which all get different treatments. Group A usually never gets to see the new feature until release, while all other groups see at least some variation of it.</p>
       <h4>What's the longest recorded time between kills?</h4>
       <p class="info-desc">Since killedbydiscord.com launched, our longest recorded time between kills is <b>64 days</b>.</p>
       <h4>How do you decide something has been abandoned?</h4>
