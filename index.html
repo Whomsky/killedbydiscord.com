@@ -166,6 +166,29 @@ nav {
   100% { background-position: 0% 50%; }
 }
 
+.scheduledkill {
+  background: var(--bg);
+  border-bottom: 1px solid var(--dark);
+  color: var(--white);
+  font-size: 10px;
+  padding: 8px 12px;
+  overflow: hidden;
+}
+.scheduledkill-content { margin-right: 100px; margin-left: 28px; }
+.scheduledkill-label { color: #bf3333e7; }
+.scheduledkill-item { color: var(--white); }
+
+.scheduledkill-track {
+white-space: nowrap;
+display: flex;
+width: max-content;
+animation: marquee 60s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .header {
   background: var(--bg);
   border-bottom: 1px solid var(--dark);
@@ -588,6 +611,24 @@ footer {
   </div>
 </nav>
 
+<!-- son please someone tell me theres a better way of doing it im crine :skull_emoji: -->
+<div class="scheduledkill" style="display:flex;">
+  <div class="scheduledkill-track">
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+    <div class="scheduledkill-content"> <span class="scheduledkill-label"><b>SCHEDULED EXECUTION:</b></span> &nbsp; <span class="scheduledkill-item"><b>Server Themes</b> &nbsp;&middot;&nbsp; November 5, 2026</span> </div>
+  </div>
+</div>
+
 <div class="header">
   <div class="announcement" style="display:none;"><img src="/images/wump.svg" class="announcement-img">
     <p>Coxi stinks</p>
@@ -678,7 +719,7 @@ var items = [
   { name: "Verification Program (legacy)",            type: "discontinued",   visible: true,    experimental: false,  born: 2017, died: 2026, desc: "The verification program was aimed towards recognizing official servers of well-known companies, games, musicians and public figures by granting them a green checkmark.<br><br>This broader program has now been discontinued, and verification is currently exclusively available to game developers." },
   { name: "Media Channels",                           type: "abandoned",      visible: true,    experimental: true,   born: 2022, died: 2024, desc: "Media Channels are similar to Forums, with the main difference being that they put more focus on media uploads (images, videos, other files).<br><br>Media Channels are currently only available to servers with Server Monetization enabled." },
   { name: "Splash Potions",                           type: "undefined",      visible: false,   experimental: true,   born: null, died: null, desc: "Potions were a consumable that allowed users to purchase select premium perks for a limited time, such as a larger file upload limit or higher streaming quality.<br><br>The effect applied to the server / channel it was used in, granting all members the buff."},
-  { name: "Server Theme",                             type: "removed",        visible: false,   experimental: true,   born: 2026, died: null, desc: "Server Themes allowed server admins to set a custom theme on the server for all members. "},
+  { name: "Server Themes",                            type: "removed",        visible: false,   experimental: true,   born: 2026, died: 2026, desc: "Server Themes allowed server admins to set a custom theme on the server for all members. "},
   { name: "Official Messages",                        type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Official Messages were a feature available only on verified servers. Servers could to configure an unique highlight color (similar to that of mentions) and apply it to messages, thus marking them as \"official\"." },
   { name: "Nitro Squad",                              type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Nitro Squad was a new Nitro tier. A single Nitro subscription (at a discounted price) that could be shared by up to 6 people. Notably, only the Squad leader would get the 2 boosts included with Nitro, but not its members." },
   { name: "Vibegrations",                             type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Vibegrations allowed users to 'vibecode' bots, integrations and activities directly on Discord.<br><br>Users could describe in natural language what they want to make, and Discord's AI models would generate the necessary code." },
@@ -691,7 +732,7 @@ var items = [
   { name: "Game Mode",                                type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Game Mode was a performance setting that would reduce Discord's CPU and GPU usage while a game was running. " },
   { name: "Voice Activity Color",                     type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Users with a Nitro subscription could change the border color of their user card while speaking in a voice channel." },
   { name: "App Moderation Rules (AutoMod)",           type: "undefined",      visible: false,   experimental: true,   born: 2026, died: null, desc: "Server admins could directly hook bots into AutoMod rules to take over its enforcement.<br><br>This allowed bots to natively block messages from being sent (just like AutoMod), as well as perform its own set of custom actions." },
-  { name: "Human-Readable Invites",                   type: "removed",        visible: true,    experimental: false,  born: 2015, died:2016,  desc: "Invites had a \"human-readable\" toggle that would instead generate them as 3 random words seperated by a dash (e.g \"discord.gg/window-blue-donkey\"), at the cost of being valid for only 30 minutes. This feature was superseded by custom vanity invites." },
+  { name: "Human-Readable Invites",                   type: "removed",        visible: true,    experimental: false,  born: 2015, died: 2016, desc: "Invites had a \"human-readable\" toggle that would instead generate them as 3 random words seperated by a dash (e.g \"discord.gg/window-blue-donkey\"), at the cost of being valid for only 30 minutes. This feature was superseded by custom vanity invites." },
 ]
 
 function isVisible(item) {
