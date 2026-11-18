@@ -590,11 +590,12 @@ footer {
 }
 
 .faq-desc {
-  margin-bottom: 25px;
-  line-height: 1.5;
+  margin-bottom: 32px;
+  line-height: 1.4;
   font-size: 14px;
-  color: #dedcdc
+  color: #dcdbdb
 }
+.faq-desc:last-of-type { margin-bottom: 0; }
 
 </style>
 </head>
@@ -958,14 +959,25 @@ function submitKill() {
     <h2>Frequently asked questions</h2>
     <p class="modal-sub">Nobody actually asked them, but we thought it's good to put some things on here anyway.</p>
     <div style="line-height:1.6;">
+
       <h3>What is killedbydiscord.com?</h3> 
       <p class="faq-desc">killedbydiscord.com is inspired by killedbygoogle.com. Our aim is to document features and other services that have been removed, discontinued, or abandoned by Discord for informational purposes.</p>
+      
       <h3>What does the "experimental" tag mean?</h3>
-      <p class="faq-desc">This tag is applied to experimental features, or simply "<b>beta features</b>", which were still actively being developed, tested and iterated on, and weren't finalized nor officially announced or released.<p> <!-- </p><br><br>We consider something to be experimental if it went through <a href="https://en.wikipedia.org/wiki/A/B_testing" target="_blank" rel="noopener noreferrer" style="color:var(--blurple);font-weight:700;">A/B testing</a>. This means that everyone is randomly sorted into at least two groups, which all get different treatments. Group A usually never gets to see the new feature until release, while all other groups see at least some variation of it.</p> -->
+      <p class="faq-desc">This tag is applied to experimental features, or simply "<b>beta features</b>", which were still actively being developed, tested and iterated on, and weren't finalized nor officially announced or released.<p>
+      
       <h3>Why are only some experimental features documented?</h3>
-      <p class="faq-desc">We only document experimental features if they were tested in the wild with real users, and not just internally with employees, bug hunters or cherry-picked testers. Experimental features that were visible to the public, thus making users aware of it, may also be listed (i.e <b>Channel Summaries</b>).</p>
+      <p class="faq-desc">We only document experimental features if they were tested in the wild with real users, and not just internally with employees, bug hunters or cherry-picked testers. Experimental features that were only visible to the public, thus making users aware of it, may also be listed (i.e <b>Channel Summaries</b>).</p>
+      
+      <h3>What is out of scope for killedbydiscord.com?</h3>
+      <p class="faq-desc">The following is considered <b>out of scope</b> and will not be listed on killedbydiscord.com: <ul>
+        <li><b>The general look of Discord</b></li> Changes related to Discord's general look (UI) and feel (UX) are not considered. This includes the various ways Discord has looked over the years (all platforms, including VR). <br><br>
+        <li><b>The general performance and speed of Discord</b></li> Changes to Discord's underlying infrastructure are not considered, such as the programming language, frameworks, libraries, and other dependencies or services used. <br><br>
+      </ul></p>
+      
       <h3>How do you decide something has been abandoned?</h3>
-      <p class="faq-desc">It's subjective. When we believe something has been neglected for long enough, we may consider it abandoned. This decision may not always be accurate, especially concerning special or experimental features and invite-only programs that are available to a small subset of users or servers only.<br><br>For our intents and purposes, abandonment isn't death, so we do not reset the <i>days since last kill</i>.</p>
+      <p class="faq-desc">It's subjective. When we believe something has been neglected for long enough, we may consider it abandoned. This decision may not always be accurate, especially concerning special or experimental features and invite-only programs that we don't have enough information or insights about.<br><br>For our intents and purposes, abandonment isn't death, so we do not reset the <i>days since last kill</i>.</p>
+      
       <h3>What's the longest recorded time between kills?</h3>
       <p class="faq-desc">Since killedbydiscord.com launched, our longest recorded time between kills is <b>87 days</b>.</p>
     </div>
